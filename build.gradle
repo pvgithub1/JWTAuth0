@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://repo.maven.apache.org/maven2/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'myproject'
+    version =  '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+String jettyVersion = "9.4.2.v20170220"
+dependencies {
+    compile("org.eclipse.jetty:jetty-server:${jettyVersion}")
+    compile("org.eclipse.jetty:jetty-webapp:${jettyVersion}")
+    compile("org.eclipse.jetty.websocket:javax-websocket-server-impl:${jettyVersion}")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("net.sourceforge.nekohtml:nekohtml:1.9.21")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.data:spring-data-jpa")
+    compile("org.hibernate:hibernate-entitymanager")
+    compile("io.jsonwebtoken:jjwt:0.7.0")
+    compile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    compile group: 'joda-time', name: 'joda-time', version: '2.3'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
+    testCompile("junit:junit")
+}
